@@ -2,18 +2,18 @@ import pandas as pd
 import numpy as np
 
 # 读取Excel文件中的两列数据
-filename = r'C:\Users\ghq\PycharmProjects\gamma数据处理\671nm.xlsx'  # 输入的Excel文件名
+filename = r'C:\Users\ghq\PycharmProjects\Upolabs_slm_gamma\671nm.xlsx'  # 输入的Excel文件名
 sheet = 'Sheet1'  # Excel文件中的工作表名
 
 # 读取数据
 df = pd.read_excel(filename, sheet_name=sheet)
-column1 = df.iloc[:, 0][::-1]  # 第一列数据
+column1 = df.iloc[:, 0]  # 第一列数据
 column2 = df.iloc[:, 1]  # 第二列数据
 
 # 进行线性插值
 x = np.linspace(min(column1), max(column1), 1024)  # 插值后的x值
 y = np.interp(x, column1, column2)  # 线性插值后的y值
-
+print(y)
 # 取整
 y = np.round(y)
 
